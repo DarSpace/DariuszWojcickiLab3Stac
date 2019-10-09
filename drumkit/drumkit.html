@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Drumkit</title>
 </head>
+
 <body>
     <audio src="sounds/boom.wav" controls></audio>
+    <audio src="sounds/clap.wav" controls></audio>
     <script type="text/javascript">
-        const clap = document.querySelector('aClap')
+        const clap = document.querySelector('#aClap')
+        const channel1 = []
+        document.body.addEventListener('keypress', playClap)
 
-        </script>
+        function playClap(e) {
+            if (e.code === 'KeyA') {
+                clap.currentTime = 0
+                clap.play()
+                const time = Date.now()
+                channel1.push({
+                  key:  e.code,
+                  time: time
+                    })
+            }
+           
+                console.log(chanel1)
+
+        }
+
+
+
+
+
+    </script>
 </body>
+
 </html>
