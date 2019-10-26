@@ -25,7 +25,6 @@ function playClap(e) {
     });
 
     const aClap = document.querySelector("#aClap1");
-    console.log("dupa", aClap);
     document.body.addEventListener("keydown", event => {
       if (event.keyCode === "A".charCodeAt(0)) {
         aClap.classList.add("aClap-active");
