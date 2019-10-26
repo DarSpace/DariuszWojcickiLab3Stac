@@ -6,36 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Drumkit</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <audio src="sounds/boom.wav" controls></audio>
-    <audio src="sounds/clap.wav" controls></audio>
-    <script type="text/javascript">
-        const clap = document.querySelector('#aClap')
-        const channel1 = []
-        document.body.addEventListener('keypress', playClap)
 
-        function playClap(e) {
-            if (e.code === 'KeyA') {
-                clap.currentTime = 0
-                clap.play()
-                const time = Date.now()
-                channel1.push({
-                  key:  e.code,
-                  time: time
-                    })
-            }
-           
-                console.log(chanel1)
+<div>DrumKit  </div>
 
-        }
+<div class="box">
+
+    
+    <audio src="sounds/boom.wav"  id="sBoom"></audio>
+    <audio src="sounds/clap.wav"  id="aClap"></audio>
+    <audio src="sounds/hihat.wav"  id="pHihat"></audio>
+    <audio src="sounds/kick.wav"  id="dKick"></audio>
+    <audio src="sounds/openhat.wav"  id="iOpenhat"></audio>
+    <audio src="sounds/ride.wav"  id="oRide"></audio>
+    <audio src="sounds/snare.wav"  id="jSnare"></audio>
+    <audio src="sounds/tink.wav"  id="lTink"></audio>
+    <audio src="sounds/tom.wav"  id="kTom"></audio>
+
+  <div class="button">
+    <button id="aClap">A</button>
+    <button id="sBoom">S</button>
+    <button id="dKick">D</button>
+    <br>
+    <button id="pHihat">P</button>
+    <button id="iOpenhat">I</button>
+    <button id="oRide">O</button>
+    <br>
+    <button id="jSnare">J</button>
+    <button id="lTink">L</button>
+    <button id="kTom">K</button>
+  </div>
+</div>
 
 
+     <!-- <button id="record">Record</button> -->
+    <!-- <button id="stopRecord" >STOP</button> -->
 
-
-
-    </script>
+    <script type="text/javascript" src="./script.js"></script> 
 </body>
 
 </html>
