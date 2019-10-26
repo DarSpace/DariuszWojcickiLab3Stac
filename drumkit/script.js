@@ -23,9 +23,14 @@ function playClap(e) {
       key: e.code,
       time,
     });
-  const aClap = document.querySelector("#aClap1");  // aktywacja po przycisnieciu
- aClap.className = "aClap-active";
+ // const aClap = document.querySelector("#aClap1");  // aktywacja po przycisnieciu
+//aClap.className = "aClap-active";
  
+//aClap.classList.add("aClap-active");
+//aClap.classList.remove("aClap-active"), 200);
+aClap.addEventListener("click", e => aClap.classList.toggle("aClap-active") );
+
+
   }
   console.log(channel1);
 }
