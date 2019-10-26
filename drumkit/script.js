@@ -23,14 +23,16 @@ function playClap(e) {
       key: e.code,
       time,
     });
+  const aClap = document.querySelector("#aClap1");
+ aClap.className = "aClap-active";
+ 
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playClap, );
 
 
-const aClap = document.querySelector("#aClap");
- aClap.className = "aClap-active";
+
  
 
 

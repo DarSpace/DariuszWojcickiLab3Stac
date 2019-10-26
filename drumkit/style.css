@@ -22,7 +22,7 @@ width: 100%;
 height: 100%;
 }
 
-#aClap 
+#aClap1 
 {
     width:  100px;
     height: 100px;
@@ -31,7 +31,7 @@ height: 100%;
    animation: alternate 0.5s linear infinite;
 }
 
-#aClap-active 
+.aClap-active 
 {
 background:#fff;
 box-shadow:  0 0 10px rgb(1, 247, 255,1),
@@ -42,56 +42,56 @@ box-shadow:  0 0 10px rgb(1, 247, 255,1),
              0 0 60px rgb(240, 37, 37,1);
 }
 
-#sBoom 
+#sBoom1
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#dKick 
+#dKick1 
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#pHihat
+#pHihat1
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#iOpenhat 
+#iOpenhat1 
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#oRide
+#oRide1
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#jSnare 
+#jSnare1 
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#lTink 
+#lTink1 
 {
     width:  100px;
     height: 100px;
     margin: 20px;
 }
 
-#kTom
+#kTom1
 {
     width:  100px;
     height: 100px;
@@ -99,7 +99,7 @@ box-shadow:  0 0 10px rgb(1, 247, 255,1),
 }
 
 
-#record
+#record1
 {
  border-radius: 50%;
  max-width: 50%;
