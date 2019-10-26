@@ -23,7 +23,7 @@ function playClap(e) {
       key: e.code,
       time,
     });
-  const aClap = document.querySelector("#aClap1");
+  const aClap = document.querySelector("#aClap1");  // aktywacja po przycisnieciu
  aClap.className = "aClap-active";
  
   }
@@ -33,7 +33,6 @@ document.body.addEventListener('keypress', playClap, );
 
 
 
- 
 
 
 
