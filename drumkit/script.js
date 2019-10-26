@@ -22,23 +22,30 @@ function playClap(e) {
     channel1.push({
       key: e.code,
       time,
+     
     });
- // const aClap = document.querySelector("#aClap1");  // aktywacja po przycisnieciu
-//aClap.className = "aClap-active";
- 
-//aClap.classList.add("aClap-active");
-//aClap.classList.remove("aClap-active"), 200);
-aClap.addEventListener("click", e => aClap.classList.toggle("aClap-active") );
+
+
+
+    const aClap = document.querySelector("#aClap1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "A".charCodeAt(0)) {
+        aClap.classList.add("aClap-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "A".charCodeAt(0)) {
+        aClap.classList.remove("aClap-active");
+      }
+    });                                                     // animacja 
+                                                        
+
 
 
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playClap, );
-
-
-
-
 
 
 
