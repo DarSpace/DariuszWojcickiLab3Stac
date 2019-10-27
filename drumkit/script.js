@@ -26,7 +26,6 @@ function playClap(e) {
     });
 
 
-
     const aClap = document.querySelector("#aClap1");          //animacja 
     document.body.addEventListener("keydown", event => {
       if (event.keyCode === "A".charCodeAt(0)) {
@@ -38,9 +37,7 @@ function playClap(e) {
         aClap.classList.remove("aClap-active");
       }
     });                                                     // animacja 
-                                                        
-
-
+                                                      
 
   }
   console.log(channel1);
@@ -62,10 +59,28 @@ function playBoom(e) {
       key: e.code,
       time,
     });
+    const sBoom = document.querySelector("#sBoom1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "S".charCodeAt(0)) {
+        sBoom.classList.add("sBoom-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "S".charCodeAt(0)) {
+        sBoom.classList.remove("sBoom-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playBoom);
+
+
+
+
+
+
+
 
 
 // =====Hihat_P===========
@@ -78,10 +93,27 @@ function playHihat(e) {
       key: e.code,
       time,
     });
+    const pHihat = document.querySelector("#pHihat1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "P".charCodeAt(0)) {
+        pHihat.classList.add("pHihat-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "P".charCodeAt(0)) {
+        pHihat.classList.remove("pHihat-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playHihat);
+
+
+
+
+
+
 
 
 
@@ -95,10 +127,23 @@ function playKick(e) {
       key: e.code,
       time,
     });
+    const dKick = document.querySelector("#dKick1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "D".charCodeAt(0)) {
+        dKick.classList.add("dKick-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "D".charCodeAt(0)) {
+        dKick.classList.remove("dKick-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playKick);
+
+
 
 
 // ====Openhat_I====
@@ -111,6 +156,17 @@ function playOpenhat(e) {
       key: e.code,
       time,
     });
+    const iOpenhat = document.querySelector("#iOpenhat1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "I".charCodeAt(0)) {
+        iOpenhat.classList.add("iOpenhat-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "I".charCodeAt(0)) {
+        iOpenhat.classList.remove("iOpenhat-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
@@ -127,6 +183,17 @@ function playRide(e) {
       key: e.code,
       time,
     });
+    const oRide = document.querySelector("#oRide1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "O".charCodeAt(0)) {
+        oRide.classList.add("oRide-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "O".charCodeAt(0)) {
+        oRide.classList.remove("oRide-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
@@ -143,6 +210,17 @@ function playSnare(e) {
       key: e.code,
       time,
     });
+    const jSnare = document.querySelector("#jSnare1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "J".charCodeAt(0)) {
+        jSnare.classList.add("jSnare-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "J".charCodeAt(0)) {
+        jSnare.classList.remove("jSnare-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
@@ -159,6 +237,17 @@ function playTink(e) {
       key: e.code,
       time,
     });
+    const lTink = document.querySelector("#lTink1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "L".charCodeAt(0)) {
+        lTink.classList.add("lTink-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "L".charCodeAt(0)) {
+        lTink.classList.remove("lTink-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
@@ -175,6 +264,17 @@ function playTom(e) {
       key: e.code,
       time,
     });
+    const kTom = document.querySelector("#kTom1");          //animacja 
+    document.body.addEventListener("keydown", event => {
+      if (event.keyCode === "K".charCodeAt(0)) {
+        kTom.classList.add("kTom-active");
+      }
+    });
+    document.body.addEventListener("keyup", event => {
+      if (event.keyCode === "K".charCodeAt(0)) {
+        kTom.classList.remove("kTom-active");
+      }
+    });                                                     // animacja 
   }
   console.log(channel1);
 }
