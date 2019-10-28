@@ -211,3 +211,24 @@ box-shadow:  0 0 10px rgb(1, 247, 255,1),
  max-height: 15%;
 
 } 
+
+.przycisk2{
+    margin-left: 30px;
+    margin-right: 30px;
+    display:inline-block;
+    border:5px solid #13e6f5;
+    border-radius: 30px 30px 30px 30px;
+    cursor:pointer;
+    text-align: center;
+    margin-top: 10px;
+   
+    color:#13e6f5;
+    font-family:Verdana;
+    font-size:12px;
+    font-weight:bold;
+    padding:29px 33px;
+    text-decoration:none;
+    height: 10px; 
+    width: 42px;
+
+}

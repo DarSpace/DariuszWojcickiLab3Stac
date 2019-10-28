@@ -37,12 +37,40 @@ function playClap(e) {
         aClap.classList.remove("aClap-active");
       }
     });                                                     // animacja 
-                                                      
+
+
+
+  if(isRecording1){
+      listaCzasow1.push( Date.now() - czasTerazniejszy1) ; // zapamietanie kiedy dziwke nagrany
+      listaDzwiekow1.push('#aClap');
+      
+     }
+
+  if(isRecording2){
+      listaCzasow2.push( Date.now() - czasTerazniejszy2) ;
+      listaDzwiekow2.push('#aClap'); 
+      
+  }
+  
+  if(isRecording3){
+      listaCzasow3.push( Date.now() - czasTerazniejszy3) ; 
+      listaDzwiekow3.push('#aClap'); 
+     
+  }
+  
+  if(isRecording4){
+      listaCzasow4.push( Date.now() - czasTerazniejszy4) ; 
+      listaDzwiekow4.push('#aClap'); 
+      
+  } 
+
+                                            
 
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playClap, );
+
 
 
 
@@ -274,7 +302,7 @@ function playTom(e) {
       if (event.keyCode === "K".charCodeAt(0)) {
         kTom.classList.remove("kTom-active");
       }
-    });                                                     // animacja 
+    });              // animacja 
   }
   console.log(channel1);
 }
@@ -283,41 +311,70 @@ document.body.addEventListener('keypress', playTom);
 
 
 
-// nagrywanie 
-
- /* var snd = new Audio("PHOENIXQUEST.mp3");
-        snd.loop = true;
-        snd.autoplay = false;
-
-        document.getElementById("stopRecord").onclick = function () { snd.pause(); };
-
-        document.getElementById("record").onclick = function () { snd.play(); };
-*/
 
 
 
 
-//====================================================
-//======RECORD=====
 
- record.oneclick = e =>
- {
-  record.disabled = true;
- record.style.backgroundColor = "blue";
- stoprecord.disabled = false;
- audioChunks = [];
- record.start();
- }
+// nagrywanie ==========================================
 
 
- stopRecord.oneclick = e =>
-{
-  record.disabled = false;
- stop.disabled = true;
-record.style.backgroundColor = "red";
- record.stop();
- }
+var czasTerazniejszy1;
+var listaCzasow1 = [];
+var listaDzwiekow1 = [];
+var isRecording1 = false; // domyslnie nie nagrywa XD
 
-// navigator.mediaDevices.getSupportedConstraints.UserMedia({audio:true})
-// .then(stream => {handFunction(stream)})
+document.querySelector('#pRecord1').addEventListener("mousedown",(e)=>{
+    if(!isRecording1){
+        czasTerazniejszy1 = Date.now();
+        listaCzasow1 = [];
+        listaDzwiekow1 = [];
+        isRecording1 = true;
+        document.querySelector('#pRecord1').innerHTML = "Stop";
+    }
+    else{
+        isRecording1 = false;
+        document.querySelector('#pRecord1').innerHTML = "Record";
+    }
+})
 
+document.querySelector('#pPlay1').addEventListener("mousedown",(e)=>{
+    for (let i = 0; i<listaDzwiekow1.length;i++){
+        setTimeout(()=>{
+            document.querySelector(listaDzwiekow1[i]).currentTime = 0; // rozpoczynanie "od nowa":)
+            document.querySelector(listaDzwiekow1[i]).play(); 
+        },listaCzasow1[i])//opoznienie
+    }
+
+
+    
+})
+
+
+
+var czasTerazniejszy2;
+var listaCzasow2 = [];
+var listaDzwiekow2 = [];
+var isRecording2 = false;
+
+document.querySelector('#pRecord2').addEventListener("mousedown",(e)=>{
+    if(!isRecording2){
+        czasTerazniejszy2 = Date.now();
+        listaCzasow2 = [];
+        listaDzwiekow2 = [];
+        isRecording2 = true;
+        document.querySelector('#pRecord2').innerHTML = "Stop";
+    }
+    else{
+        isRecording2 = false;
+        document.querySelector('#pRecord2').innerHTML = "Record";
+    }
+})
+
+document.querySelector('#pPlay2').addEventListener("mousedown",(e)=>{
+    for (let i = 0; i<listaDzwiekow2.length;i++){
+        setTimeout(()=>{
+            document.querySelector(listaDzwiekow2[i]).currentTime = 0; 
+            document.querySelector(listaDzwiekow2[i]).play(); 
+        },listaCzasow2[i])}
+})
