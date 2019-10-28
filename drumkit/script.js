@@ -10,6 +10,15 @@ const snare = document.querySelector('#jSnare');
 const tink = document.querySelector('#lTink');
 const tom = document.querySelector('#kTom');
 
+const aClap = document.querySelector("#aClap1");
+const sBoom = document.querySelector("#sBoom1");
+const pHihat = document.querySelector("#pHihat1");
+const dKick = document.querySelector("#dKick1");
+const iOpenhat = document.querySelector("#iOpenhat1");
+const oRide = document.querySelector("#oRide1");
+const jSnare = document.querySelector("#jSnare1");
+const lTink = document.querySelector("#lTink1");
+const kTom = document.querySelector("#kTom1");
 
 function checkRecrdings(key) {
   if (isRecording1) {
@@ -48,27 +57,23 @@ function playClap(e) {
     channel1.push({
       key: e.code,
       time,
-
     });
-    const aClap = document.querySelector("#aClap1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "A".charCodeAt(0)) {
-        aClap.classList.add("aClap-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "A".charCodeAt(0)) {
-        aClap.classList.remove("aClap-active");
-      }
-    });
-
-
     checkRecrdings('#aClap');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playClap);
 
+document.body.addEventListener("keydown", event => {      //animacja 
+  if (event.keyCode === "A".charCodeAt(0)) {
+    aClap.classList.add("aClap-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "A".charCodeAt(0)) {
+    aClap.classList.remove("aClap-active");
+  }
+});
 
 
 
@@ -85,17 +90,6 @@ function playBoom(e) {
       key: e.code,
       time,
     });
-    const sBoom = document.querySelector("#sBoom1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "S".charCodeAt(0)) {
-        sBoom.classList.add("sBoom-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "S".charCodeAt(0)) {
-        sBoom.classList.remove("sBoom-active");
-      }
-    });                                                     // animacja 
 
     checkRecrdings('#sBoom');
   }
@@ -103,6 +97,16 @@ function playBoom(e) {
 }
 document.body.addEventListener('keypress', playBoom);
 
+document.body.addEventListener("keydown", event => {       //animacja 
+  if (event.keyCode === "S".charCodeAt(0)) {
+    sBoom.classList.add("sBoom-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "S".charCodeAt(0)) {
+    sBoom.classList.remove("sBoom-active");
+  }
+});                                                     // animacja 
 
 
 
@@ -121,24 +125,23 @@ function playHihat(e) {
       key: e.code,
       time,
     });
-    const pHihat = document.querySelector("#pHihat1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "P".charCodeAt(0)) {
-        pHihat.classList.add("pHihat-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "P".charCodeAt(0)) {
-        pHihat.classList.remove("pHihat-active");
-      }
-    });                                                     // animacja 
+
     checkRecrdings('#pHihat');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playHihat);
 
-
+document.body.addEventListener("keydown", event => {    //animacja 
+  if (event.keyCode === "P".charCodeAt(0)) {
+    pHihat.classList.add("pHihat-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "P".charCodeAt(0)) {
+    pHihat.classList.remove("pHihat-active");
+  }
+});                                                     // animacja 
 
 
 
@@ -156,24 +159,23 @@ function playKick(e) {
       key: e.code,
       time,
     });
-    const dKick = document.querySelector("#dKick1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "D".charCodeAt(0)) {
-        dKick.classList.add("dKick-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "D".charCodeAt(0)) {
-        dKick.classList.remove("dKick-active");
-      }
-    });                                                     // animacja 
+
     checkRecrdings('#dKick');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playKick);
 
-
+document.body.addEventListener("keydown", event => {   //animacja 
+  if (event.keyCode === "D".charCodeAt(0)) {
+    dKick.classList.add("dKick-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "D".charCodeAt(0)) {
+    dKick.classList.remove("dKick-active");
+  }
+});                                                     // animacja 
 
 
 // ====Openhat_I====
@@ -186,22 +188,27 @@ function playOpenhat(e) {
       key: e.code,
       time,
     });
-    const iOpenhat = document.querySelector("#iOpenhat1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "I".charCodeAt(0)) {
-        iOpenhat.classList.add("iOpenhat-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "I".charCodeAt(0)) {
-        iOpenhat.classList.remove("iOpenhat-active");
-      }
-    });                                                     // animacja 
+
     checkRecrdings('#iOpenhat');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playOpenhat);
+
+
+document.body.addEventListener("keydown", event => {     //animacja 
+  if (event.keyCode === "I".charCodeAt(0)) {
+    iOpenhat.classList.add("iOpenhat-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "I".charCodeAt(0)) {
+    iOpenhat.classList.remove("iOpenhat-active");
+  }
+});                                                     // animacja 
+
+
+
 
 
 // ====Ride_O====
@@ -214,22 +221,25 @@ function playRide(e) {
       key: e.code,
       time,
     });
-    const oRide = document.querySelector("#oRide1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "O".charCodeAt(0)) {
-        oRide.classList.add("oRide-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "O".charCodeAt(0)) {
-        oRide.classList.remove("oRide-active");
-      }
-    });                                                     // animacja 
+
     checkRecrdings('#oRide');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playRide);
+
+document.body.addEventListener("keydown", event => {    //animacja 
+  if (event.keyCode === "O".charCodeAt(0)) {
+    oRide.classList.add("oRide-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "O".charCodeAt(0)) {
+    oRide.classList.remove("oRide-active");
+  }
+});                                                     // animacja 
+
+
 
 
 // ====Snare_J====
@@ -242,22 +252,24 @@ function playSnare(e) {
       key: e.code,
       time,
     });
-    const jSnare = document.querySelector("#jSnare1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "J".charCodeAt(0)) {
-        jSnare.classList.add("jSnare-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "J".charCodeAt(0)) {
-        jSnare.classList.remove("jSnare-active");
-      }
-    });                                                     // animacja 
+
     checkRecrdings('#jSnare');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playSnare);
+
+
+document.body.addEventListener("keydown", event => {    //animacja 
+  if (event.keyCode === "J".charCodeAt(0)) {
+    jSnare.classList.add("jSnare-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "J".charCodeAt(0)) {
+    jSnare.classList.remove("jSnare-active");
+  }
+});                                                     // animacja 
 
 
 // ====Tink_L====
@@ -270,22 +282,27 @@ function playTink(e) {
       key: e.code,
       time,
     });
-    const lTink = document.querySelector("#lTink1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "L".charCodeAt(0)) {
-        lTink.classList.add("lTink-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "L".charCodeAt(0)) {
-        lTink.classList.remove("lTink-active");
-      }
-    });                                                     // animacja 
+
+
     checkRecrdings('#lTink');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playTink);
+
+document.body.addEventListener("keydown", event => {     //animacja 
+  if (event.keyCode === "L".charCodeAt(0)) {
+    lTink.classList.add("lTink-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "L".charCodeAt(0)) {
+    lTink.classList.remove("lTink-active");
+  }
+});                                                     // animacja 
+
+
+
 
 
 // ====Tom_K====
@@ -298,24 +315,23 @@ function playTom(e) {
       key: e.code,
       time,
     });
-    const kTom = document.querySelector("#kTom1");          //animacja 
-    document.body.addEventListener("keydown", event => {
-      if (event.keyCode === "K".charCodeAt(0)) {
-        kTom.classList.add("kTom-active");
-      }
-    });
-    document.body.addEventListener("keyup", event => {
-      if (event.keyCode === "K".charCodeAt(0)) {
-        kTom.classList.remove("kTom-active");
-      }
-    });              // animacja 
+
     checkRecrdings('#kTom');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playTom);
 
-
+document.body.addEventListener("keydown", event => {   //animacja 
+  if (event.keyCode === "K".charCodeAt(0)) {
+    kTom.classList.add("kTom-active");
+  }
+});
+document.body.addEventListener("keyup", event => {
+  if (event.keyCode === "K".charCodeAt(0)) {
+    kTom.classList.remove("kTom-active");
+  }
+});              // animacja 
 
 
 
@@ -353,9 +369,6 @@ document.querySelector('#pPlay1').addEventListener("mousedown", (e) => {
       document.querySelector(listaDzwiekow1[i]).play();
     }, listaCzasow1[i])//opoznienie
   }
-
-
-
 })
 
 
