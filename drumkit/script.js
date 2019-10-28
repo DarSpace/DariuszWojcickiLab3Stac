@@ -11,6 +11,32 @@ const tink = document.querySelector('#lTink');
 const tom = document.querySelector('#kTom');
 
 
+function checkRecrdings(key) {
+  if (isRecording1) {
+    //{time: Date.now() - czasTerazniejszy1, key: key}
+    listaCzasow1.push(Date.now() - czasTerazniejszy1); // zapamietanie kiedy dziwke nagrany
+    listaDzwiekow1.push(key);
+
+  }
+
+  if (isRecording2) {
+    listaCzasow2.push(Date.now() - czasTerazniejszy2);
+    listaDzwiekow2.push(key);
+  }
+
+  if (isRecording3) {
+    listaCzasow3.push(Date.now() - czasTerazniejszy3);
+    listaDzwiekow3.push(key);
+
+  }
+
+  if (isRecording4) {
+    listaCzasow4.push(Date.now() - czasTerazniejszy4);
+    listaDzwiekow4.push(key);
+
+  }
+}
+
 
 
 // ====Clap_A=====
@@ -22,10 +48,8 @@ function playClap(e) {
     channel1.push({
       key: e.code,
       time,
-     
+
     });
-
-
     const aClap = document.querySelector("#aClap1");          //animacja 
     document.body.addEventListener("keydown", event => {
       if (event.keyCode === "A".charCodeAt(0)) {
@@ -36,40 +60,14 @@ function playClap(e) {
       if (event.keyCode === "A".charCodeAt(0)) {
         aClap.classList.remove("aClap-active");
       }
-    });                                                     // animacja 
+    });
 
 
-
-  if(isRecording1){
-      listaCzasow1.push( Date.now() - czasTerazniejszy1) ; // zapamietanie kiedy dziwke nagrany
-      listaDzwiekow1.push('#aClap');
-      
-     }
-
-  if(isRecording2){
-      listaCzasow2.push( Date.now() - czasTerazniejszy2) ;
-      listaDzwiekow2.push('#aClap'); 
-      
-  }
-  
-  if(isRecording3){
-      listaCzasow3.push( Date.now() - czasTerazniejszy3) ; 
-      listaDzwiekow3.push('#aClap'); 
-     
-  }
-  
-  if(isRecording4){
-      listaCzasow4.push( Date.now() - czasTerazniejszy4) ; 
-      listaDzwiekow4.push('#aClap'); 
-      
-  } 
-
-                                            
-
+    checkRecrdings('#aClap');
   }
   console.log(channel1);
 }
-document.body.addEventListener('keypress', playClap, );
+document.body.addEventListener('keypress', playClap);
 
 
 
@@ -98,6 +96,8 @@ function playBoom(e) {
         sBoom.classList.remove("sBoom-active");
       }
     });                                                     // animacja 
+
+    checkRecrdings('#sBoom');
   }
   console.log(channel1);
 }
@@ -132,6 +132,7 @@ function playHihat(e) {
         pHihat.classList.remove("pHihat-active");
       }
     });                                                     // animacja 
+    checkRecrdings('#pHihat');
   }
   console.log(channel1);
 }
@@ -166,6 +167,7 @@ function playKick(e) {
         dKick.classList.remove("dKick-active");
       }
     });                                                     // animacja 
+    checkRecrdings('#dKick');
   }
   console.log(channel1);
 }
@@ -195,6 +197,7 @@ function playOpenhat(e) {
         iOpenhat.classList.remove("iOpenhat-active");
       }
     });                                                     // animacja 
+    checkRecrdings('#iOpenhat');
   }
   console.log(channel1);
 }
@@ -222,6 +225,7 @@ function playRide(e) {
         oRide.classList.remove("oRide-active");
       }
     });                                                     // animacja 
+    checkRecrdings('#oRide');
   }
   console.log(channel1);
 }
@@ -249,6 +253,7 @@ function playSnare(e) {
         jSnare.classList.remove("jSnare-active");
       }
     });                                                     // animacja 
+    checkRecrdings('#jSnare');
   }
   console.log(channel1);
 }
@@ -276,6 +281,7 @@ function playTink(e) {
         lTink.classList.remove("lTink-active");
       }
     });                                                     // animacja 
+    checkRecrdings('#lTink');
   }
   console.log(channel1);
 }
@@ -303,10 +309,12 @@ function playTom(e) {
         kTom.classList.remove("kTom-active");
       }
     });              // animacja 
+    checkRecrdings('#kTom');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playTom);
+
 
 
 
@@ -322,32 +330,32 @@ document.body.addEventListener('keypress', playTom);
 var czasTerazniejszy1;
 var listaCzasow1 = [];
 var listaDzwiekow1 = [];
-var isRecording1 = false; // domyslnie nie nagrywa XD
+var isRecording1 = false; // domyslnie nie nagrywa ale nagrywa 
 
-document.querySelector('#pRecord1').addEventListener("mousedown",(e)=>{
-    if(!isRecording1){
-        czasTerazniejszy1 = Date.now();
-        listaCzasow1 = [];
-        listaDzwiekow1 = [];
-        isRecording1 = true;
-        document.querySelector('#pRecord1').innerHTML = "Stop";
-    }
-    else{
-        isRecording1 = false;
-        document.querySelector('#pRecord1').innerHTML = "Record";
-    }
+document.querySelector('#pRecord1').addEventListener("mousedown", (e) => {
+  if (!isRecording1) {
+    czasTerazniejszy1 = Date.now();
+    listaCzasow1 = [];
+    listaDzwiekow1 = [];
+    isRecording1 = true;
+    document.querySelector('#pRecord1').innerHTML = "Stop";
+  }
+  else {
+    isRecording1 = false;
+    document.querySelector('#pRecord1').innerHTML = "Record";
+  }
 })
 
-document.querySelector('#pPlay1').addEventListener("mousedown",(e)=>{
-    for (let i = 0; i<listaDzwiekow1.length;i++){
-        setTimeout(()=>{
-            document.querySelector(listaDzwiekow1[i]).currentTime = 0; // rozpoczynanie "od nowa":)
-            document.querySelector(listaDzwiekow1[i]).play(); 
-        },listaCzasow1[i])//opoznienie
-    }
+document.querySelector('#pPlay1').addEventListener("mousedown", (e) => {
+  for (let i = 0; i < listaDzwiekow1.length; i++) {
+    setTimeout(() => {
+      document.querySelector(listaDzwiekow1[i]).currentTime = 0; // rozpoczynanie "od nowa":)
+      document.querySelector(listaDzwiekow1[i]).play();
+    }, listaCzasow1[i])//opoznienie
+  }
 
 
-    
+
 })
 
 
@@ -357,24 +365,91 @@ var listaCzasow2 = [];
 var listaDzwiekow2 = [];
 var isRecording2 = false;
 
-document.querySelector('#pRecord2').addEventListener("mousedown",(e)=>{
-    if(!isRecording2){
-        czasTerazniejszy2 = Date.now();
-        listaCzasow2 = [];
-        listaDzwiekow2 = [];
-        isRecording2 = true;
-        document.querySelector('#pRecord2').innerHTML = "Stop";
-    }
-    else{
-        isRecording2 = false;
-        document.querySelector('#pRecord2').innerHTML = "Record";
-    }
+document.querySelector('#pRecord2').addEventListener("mousedown", (e) => {
+  if (!isRecording2) {
+    czasTerazniejszy2 = Date.now();
+    listaCzasow2 = [];
+    listaDzwiekow2 = [];
+    isRecording2 = true;
+    document.querySelector('#pRecord2').innerHTML = "Stop";
+  }
+  else {
+    isRecording2 = false;
+    document.querySelector('#pRecord2').innerHTML = "Record";
+  }
 })
 
-document.querySelector('#pPlay2').addEventListener("mousedown",(e)=>{
-    for (let i = 0; i<listaDzwiekow2.length;i++){
-        setTimeout(()=>{
-            document.querySelector(listaDzwiekow2[i]).currentTime = 0; 
-            document.querySelector(listaDzwiekow2[i]).play(); 
-        },listaCzasow2[i])}
+document.querySelector('#pPlay2').addEventListener("mousedown", (e) => {
+  for (let i = 0; i < listaDzwiekow2.length; i++) {
+    //let dzwiek = lista2[i];
+    setTimeout(() => {
+      document.querySelector(listaDzwiekow2[i]).currentTime = 0;
+      document.querySelector(listaDzwiekow2[i]).play();
+    }, listaCzasow2[i])
+  }
+})
+
+
+
+
+var czasTerazniejszy3;
+var listaCzasow3 = [];
+var listaDzwiekow3 = [];
+var isRecording3 = false;
+
+document.querySelector('#pRecord3').addEventListener("mousedown", (e) => {
+  if (!isRecording3) {
+    czasTerazniejszy3 = Date.now();
+    listaCzasow3 = [];
+    listaDzwiekow3 = [];
+    isRecording3 = true;
+    document.querySelector('#pRecord3').innerHTML = "Stop";
+  }
+  else {
+    isRecording3 = false;
+    document.querySelector('#pRecord3').innerHTML = "Record";
+  }
+})
+
+document.querySelector('#pPlay3').addEventListener("mousedown", (e) => {
+  for (let i = 0; i < listaDzwiekow3.length; i++) {
+    //let dzwiek = lista3[i];
+    setTimeout(() => {
+      document.querySelector(listaDzwiekow3[i]).currentTime = 0;
+      document.querySelector(listaDzwiekow3[i]).play();
+    }, listaCzasow3[i])
+  }
+})
+
+
+
+
+
+var czasTerazniejszy4;
+var listaCzasow4 = [];
+var listaDzwiekow4 = [];
+var isRecording4 = false;
+
+document.querySelector('#pRecord4').addEventListener("mousedown", (e) => {
+  if (!isRecording4) {
+    czasTerazniejszy4 = Date.now();
+    listaCzasow4 = [];
+    listaDzwiekow4 = [];
+    isRecording4 = true;
+    document.querySelector('#pRecord4').innerHTML = "Stop";
+  }
+  else {
+    isRecording4 = false;
+    document.querySelector('#pRecord4').innerHTML = "Record";
+  }
+})
+
+document.querySelector('#pPlay4').addEventListener("mousedown", (e) => {
+  for (let i = 0; i < listaDzwiekow4.length; i++) {
+    //let dzwiek = lista4[i];
+    setTimeout(() => {
+      document.querySelector(listaDzwiekow4[i]).currentTime = 0;
+      document.querySelector(listaDzwiekow4[i]).play();
+    }, listaCzasow4[i])
+  }
 })
