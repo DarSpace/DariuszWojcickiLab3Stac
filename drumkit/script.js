@@ -283,11 +283,16 @@ document.body.addEventListener('keypress', playTom);
 
 
 
+// nagrywanie 
 
+ /* var snd = new Audio("PHOENIXQUEST.mp3");
+        snd.loop = true;
+        snd.autoplay = false;
 
+        document.getElementById("stopRecord").onclick = function () { snd.pause(); };
 
-
-
+        document.getElementById("record").onclick = function () { snd.play(); };
+*/
 
 
 
@@ -295,25 +300,23 @@ document.body.addEventListener('keypress', playTom);
 //====================================================
 //======RECORD=====
 
-// record.oneclick = e =>
-// {
-// console.log('I was clicked')
-// record.disabled = true;
-// record.style.backgroundColor = "blue";
-// stoprecord.disabled = false;
-// audioChunks = [];
-// record.start();
-// }
+ record.oneclick = e =>
+ {
+  record.disabled = true;
+ record.style.backgroundColor = "blue";
+ stoprecord.disabled = false;
+ audioChunks = [];
+ record.start();
+ }
 
 
-// stopRecord.oneclick = e =>
-// {
-// console.log("I Was Clicked")
-// record.disabled = false;
-// stop.disabled = true;
-// record.style.backgroundColor = "red";
-// record.stop();
-// }
+ stopRecord.oneclick = e =>
+{
+  record.disabled = false;
+ stop.disabled = true;
+record.style.backgroundColor = "red";
+ record.stop();
+ }
 
 // navigator.mediaDevices.getSupportedConstraints.UserMedia({audio:true})
 // .then(stream => {handFunction(stream)})
