@@ -25,7 +25,6 @@ function checkRecrdings(key) {
     //{time: Date.now() - czasTerazniejszy1, key: key}
     listaCzasow1.push(Date.now() - czasTerazniejszy1); // zapamietanie kiedy dziwke nagrany
     listaDzwiekow1.push(key);
-
   }
 
   if (isRecording2) {
@@ -36,16 +35,13 @@ function checkRecrdings(key) {
   if (isRecording3) {
     listaCzasow3.push(Date.now() - czasTerazniejszy3);
     listaDzwiekow3.push(key);
-
   }
 
   if (isRecording4) {
     listaCzasow4.push(Date.now() - czasTerazniejszy4);
     listaDzwiekow4.push(key);
-
   }
 }
-
 
 
 // ====Clap_A=====
@@ -63,7 +59,6 @@ function playClap(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playClap);
-
 document.body.addEventListener("keydown", event => {      //animacja 
   if (event.keyCode === "A".charCodeAt(0)) {
     aClap.classList.add("aClap-active");
@@ -74,10 +69,6 @@ document.body.addEventListener("keyup", event => {
     aClap.classList.remove("aClap-active");
   }
 });
-
-
-
-
 
 
 // ====Boom_S====
@@ -96,7 +87,6 @@ function playBoom(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playBoom);
-
 document.body.addEventListener("keydown", event => {       //animacja 
   if (event.keyCode === "S".charCodeAt(0)) {
     sBoom.classList.add("sBoom-active");
@@ -107,12 +97,6 @@ document.body.addEventListener("keyup", event => {
     sBoom.classList.remove("sBoom-active");
   }
 });                                                     // animacja 
-
-
-
-
-
-
 
 
 // =====Hihat_P===========
@@ -131,7 +115,6 @@ function playHihat(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playHihat);
-
 document.body.addEventListener("keydown", event => {    //animacja 
   if (event.keyCode === "P".charCodeAt(0)) {
     pHihat.classList.add("pHihat-active");
@@ -142,10 +125,6 @@ document.body.addEventListener("keyup", event => {
     pHihat.classList.remove("pHihat-active");
   }
 });                                                     // animacja 
-
-
-
-
 
 
 
@@ -165,7 +144,6 @@ function playKick(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playKick);
-
 document.body.addEventListener("keydown", event => {   //animacja 
   if (event.keyCode === "D".charCodeAt(0)) {
     dKick.classList.add("dKick-active");
@@ -194,8 +172,6 @@ function playOpenhat(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playOpenhat);
-
-
 document.body.addEventListener("keydown", event => {     //animacja 
   if (event.keyCode === "I".charCodeAt(0)) {
     iOpenhat.classList.add("iOpenhat-active");
@@ -206,8 +182,6 @@ document.body.addEventListener("keyup", event => {
     iOpenhat.classList.remove("iOpenhat-active");
   }
 });                                                     // animacja 
-
-
 
 
 
@@ -227,7 +201,6 @@ function playRide(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playRide);
-
 document.body.addEventListener("keydown", event => {    //animacja 
   if (event.keyCode === "O".charCodeAt(0)) {
     oRide.classList.add("oRide-active");
@@ -238,7 +211,6 @@ document.body.addEventListener("keyup", event => {
     oRide.classList.remove("oRide-active");
   }
 });                                                     // animacja 
-
 
 
 
@@ -258,8 +230,6 @@ function playSnare(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playSnare);
-
-
 document.body.addEventListener("keydown", event => {    //animacja 
   if (event.keyCode === "J".charCodeAt(0)) {
     jSnare.classList.add("jSnare-active");
@@ -283,13 +253,11 @@ function playTink(e) {
       time,
     });
 
-
     checkRecrdings('#lTink');
   }
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playTink);
-
 document.body.addEventListener("keydown", event => {     //animacja 
   if (event.keyCode === "L".charCodeAt(0)) {
     lTink.classList.add("lTink-active");
@@ -300,8 +268,6 @@ document.body.addEventListener("keyup", event => {
     lTink.classList.remove("lTink-active");
   }
 });                                                     // animacja 
-
-
 
 
 
@@ -321,7 +287,6 @@ function playTom(e) {
   console.log(channel1);
 }
 document.body.addEventListener('keypress', playTom);
-
 document.body.addEventListener("keydown", event => {   //animacja 
   if (event.keyCode === "K".charCodeAt(0)) {
     kTom.classList.add("kTom-active");
