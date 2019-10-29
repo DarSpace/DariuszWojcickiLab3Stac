@@ -335,11 +335,6 @@ document.body.addEventListener("keyup", event => {
 
 
 
-
-
-
-
-
 // nagrywanie ==========================================
 
 
