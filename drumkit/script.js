@@ -23,7 +23,7 @@ const kTom = document.querySelector("#kTom1");
 function checkRecrdings(key) {
   if (isRecording1) {
     //{time: Date.now() - czasTerazniejszy1, key: key}
-    listaCzasow1.push(Date.now() - czasTerazniejszy1); // zapamietanie kiedy dziwke nagrany
+    listaCzasow1.push(Date.now() - czasTerazniejszy1); // zapamiętuje kiedy nagrany jest dzwięk
     listaDzwiekow1.push(key);
   }
 
@@ -330,6 +330,9 @@ document.querySelector('#pPlay1').addEventListener("mousedown", (e) => {
     }, listaCzasow1[i])//opoznienie
   }
 })
+
+
+
 
 
 

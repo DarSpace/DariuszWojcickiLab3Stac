@@ -3,15 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
-    <title>Prawie Fotoshop</title>
+    <title>Bieda Photoshop</title>
+    <style>
+    #canvas {
+        position: absolute;
+        background: lightgrey;
+        width: 100%;
+        bottom: 0;
+     }
+     .brush {
+         position: absolute;
+         width: 10px;
+         height: 10px;
+         animation-name: dissapear;
+         animation-duration: 1s;
+         animation-delay: 2s;
+         animation-timing-function: ease-out;
+         /* animation-fill-mode: forwards; */
+         background: pink;
+     }
+    .circle {
+        border-radius: 50%;
+    }
+    .red {
+        background: red;
+    }
+    .square-brush-btn {
+        width: 25px;
+        height: 25px;
+        background: pink;
+        border: none;
+    }
+    .circle-brush-btn {
+        width: 25px;
+        height: 25px;
+        background: pink;
+        border: none;
+        border-radius: 50%;
+    }
+    @keyframes dissapear {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    </style>
 </head>
 <body>
-
-    <button id="circleBtn">wstaw kólko</button>
+    <button id="circleBrush" class="circle-brush-btn"></button>
+    <button id="squareBrush" class="square-brush-btn"></button>
     <div id="canvas">
+
     </div>
-    <script type="text/javascript" src=script.js></script>
+    <script type="text/javascript">
+    const canvas = document.querySelector('#canvas')
+    const canvasConfig =  {
+        top: 100,
+        left: 0
+    }
+
+    let brushShape      = 'circle'
+
+    document.querySelector('#circleBrush')
+        .addEventListener('click',() => setBrush('circle'))
+    
+    document.querySelector('#squareBrush')
+        .addEventListener('click',() => setBrush('square'))
+    
+    canvas.addEventListener('touchmove', onCanvasTouchMove)
+    canvas.style.top = canvasConfig.top + 'px';
+    canvas.style.left = canvasConfig.left + 'px';
+
+    function setBrush(shape) {
+        brushShape = shape
+    }
+    function onCanvasTouchMove(e) {
+        const xPos = e.touches[0].clientX - canvasConfig.left
+        const yPos = e.touches[0].clientY - canvasConfig.top
+        rysuj(xPos, yPos)
+    }
+
+    function rysuj(x, y) {    
+        const newDiv = document.createElement('div')
+        newDiv.classList.add('brush',brushShape)
+        newDiv.style.left = x + 'px'
+        newDiv.style.top = y + 'px'
+        canvas.appendChild(newDiv)
+    }
+    
+    </script>
 </body>
 </html>
