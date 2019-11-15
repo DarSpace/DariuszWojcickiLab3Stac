@@ -1,10 +1,10 @@
-/* class Photoshop {                                  //klasa do rysowania
+/* class Photoshop {                                  //klasa do rysowania 
     constructor(canvasId) {
         this.brushShape = 'circle'
         this.setCanvas(canvasId)
     }
 
-    setBrush(shape) {                            //pobiera pędzel
+    setBrush(shape) {                            //pobiera pędzel 
         this.brushShape = shape
     }
 
@@ -35,4 +35,43 @@
 }
 
 */
+document.addEventListener('DOMContentLoaded', appStart)  // to dobre rysowanie
+let canvass
+let myPS
 
+
+
+window.addEventListener("load", () => {
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+
+    const painting = false;
+
+    function startPosition(e) {
+        painting = true;
+        draw(e)
+    }
+
+    function finishedPosition() {
+        painting = false;
+        ctx.beginPath();
+    }
+
+    function draw(e) {
+        if (!painting) return;
+        ctx.lineWidth = 10;         // grubość pędzla
+        ctx.linrCap = "round";
+        ctx.strokeStyle = "green"   //kolor pędzla
+
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.MooveTo(e.client, e.clientY)
+    }
+
+    canvas.addEventListner("mousedown", startPosition);
+    canvas.addEventListner("mouseup", finishedPosition);
+    canvas.addEventListner("mousemove", draw);
+
+});

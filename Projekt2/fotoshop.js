@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', appStart)
 let canvas
 let ctx
+let myPS
 
 function appStart() {
     canvas = document.querySelector('#canvas')
@@ -13,6 +14,8 @@ function appStart() {
     document
         .querySelector('#btnLight')
         .addEventListener('click', () => lightFilter())
+
+
 
     ctx = canvas.getContext('2d')
 
