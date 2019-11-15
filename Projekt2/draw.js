@@ -2,16 +2,16 @@
 
 document.addEventListener('DOMContentLoaded', window)  // to dobre 
 let canvas;
-let myPS;
+
 
 
 
 window.addEventListener("load", () => {
-    canvas = document.querySelector("canvas");
+    canvas = document.querySelector("#canvas");
     const ctx = canvas.getContext("2d");
 
 
-    const painting = false;
+    let painting = false;
 
     function startPosition(e) {
         painting = true;
@@ -35,9 +35,9 @@ window.addEventListener("load", () => {
         ctx.moveTo(e.client, e.clientY)
     }
 
-    canvas.addEventListner("mousedown", startPosition);
-    canvas.addEventListner("mouseup", finishedPosition);
-    canvas.addEventListner("mousemove", draw);
+    canvas.addEventListener("mousedown", startPosition);
+    canvas.addEventListener("mouseup", finishedPosition);
+    canvas.addEventListener("mousemove", draw);
 
 });
 
@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
 
 
 
-/* class Photoshop {                                  //klasa do rysowania
+class PhotoShop {                                  //klasa do rysowania
     constructor(canvasId) {
         this.brushShape = 'circle'
         this.setCanvas(canvasId)
@@ -75,10 +75,9 @@ window.addEventListener("load", () => {
     draw(x, y) {
         const newDiv = document.createElement('div')
         newDiv.classList.add('brush', this.brushShape)
-        newDiv.style.left = x + 'px'
-        newDiv.style.top = y + 'px'
+        newDiv.style.left = x + 'px';
+        newDiv.style.top = y + 'px';
         this.canvas.appendChild(newDiv)
     }
 }
 
-*/

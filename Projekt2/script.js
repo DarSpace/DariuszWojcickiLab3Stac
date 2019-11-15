@@ -5,16 +5,16 @@ let myPS
 
 function appStart() {
 
-    myPS = new Photoshop('canvas')
-    dokument
+    myPS = new PhotoShop('#canvas')
+    document
         .quertySelector('#squareBrush')
         .addEventListener('touchstart', () => {
-            Photoshop.setBrush('square')
+            myPS.setBrush('square')
         })
-    dokument
+    document
         .quertySelector('#circleBrush')
         .addEventListener('touchstart', () => {
-            Photoshop.setBrush('circle')
+            myPS.setBrush('circle')
         });
 
 } 

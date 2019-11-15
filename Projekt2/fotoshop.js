@@ -34,7 +34,7 @@ function appStart() {
 
 function darkenFilter(amount = 30) {                             //przyciemnianie 
     const canvasData = ctx.getImageData(0, 0, 800, 600)
-    for (let i = 0; i < canvasData.data.length; i += 4) {
+    for (let i = 0; i < canvasData.data.length; i += 3) {
         // R
         canvasData.data[i] -= amount
         // G
@@ -48,7 +48,7 @@ function darkenFilter(amount = 30) {                             //przyciemniani
 
 function lightFilter(amount = 30) {
     const canvasData = ctx.getImageData(0, 0, 800, 600)                            //rozjasnianie 
-    for (let i = 0; i < canvasData.data.length; i += 4) {
+    for (let i = 0; i < canvasData.data.length; i += 3) {
         // R
         canvasData.data[i] += amount
         // G
@@ -61,9 +61,20 @@ function lightFilter(amount = 30) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 function contrastFilter(amount = 7) {                          //kontrast ale nie działa
     const canvasData = ctx.getImageData(0, 0, 800, 600)
-    for (let i = 0; i < canvasData.data.length; i += 4) {
+    for (let i = 0; i < canvasData.data.length; i += 3) {
         const r = canvasData.data[i]
         const g = canvasData.data[i + 1]
         const b = canvasData.data[i + 2]
@@ -85,13 +96,13 @@ function contrastFilter(amount = 7) {                          //kontrast ale ni
 function drawImage(img, x, y) {                              // rysowanie na canvasie obrazka 
     ctx.drawImage(img, x, y)
 }
-// function drawRect(x, y, width, height) {
-//     ctx.rect(x, y, width, height)
-//     ctx.fill()
-// }
+function drawRect(x, y, width, height) {
+    ctx.rect(x, y, width, height)
+    ctx.fill()
+}
 
-// function drawCircle(x, y, radius) {
-//     ctx.arc(x, y, radius, 0, 2 * Math.PI)
-//     ctx.fill()
-//     // ctx.stroke()
-// }
+function drawCircle(x, y, radius) {
+    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.fill()
+    ctx.stroke()
+}
