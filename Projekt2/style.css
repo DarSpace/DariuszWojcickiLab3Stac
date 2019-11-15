@@ -1,0 +1,57 @@
+body 
+{
+    background: rgba(200, 255, 0, 0.103);
+}
+
+
+#canvas {
+    position: absolute;
+    background: rgba(211, 211, 211, 0); 
+    width: 800px;
+    height: 600px;
+}
+
+.brush {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation-name: dissapear;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-timing-function: ease-out;
+    /* animation-fill-mode: forwards; */
+    background: pink;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.red {
+    background: red;
+}
+
+#squareBrush {
+    width: 25px;
+    height: 25px;
+    background: pink;
+    border: none;
+}
+
+#circleBrush {
+    width: 25px;
+    height: 25px;
+    background: pink;
+    border: none;
+    border-radius: 50%;
+}
+
+@keyframes dissapear {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
