@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', appStart)
-let canvass
-let myPS
+
+
 
 
 function appStart() {
@@ -14,6 +14,7 @@ function appStart() {
     document
         .querySelector('#btnLight')
         .addEventListener('click', () => lightFilter())
+
 
 
 
@@ -62,7 +63,7 @@ function lightFilter(amount = 30) {
 
 function contrastFilter(amount = 7) {                          //kontrast ale nie działa
     const canvasData = ctx.getImageData(0, 0, 800, 600)
-    for (let i = 0; i < canvasData.data.length; i += 0) {
+    for (let i = 0; i < canvasData.data.length; i += 4) {
         const r = canvasData.data[i]
         const g = canvasData.data[i + 1]
         const b = canvasData.data[i + 2]
