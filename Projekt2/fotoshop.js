@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', appStart)
-let canvas
-let ctx
+let canvass
 let myPS
+
 
 function appStart() {
     canvas = document.querySelector('#canvas')

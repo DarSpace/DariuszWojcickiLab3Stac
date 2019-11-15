@@ -35,7 +35,7 @@
 }
 
 */
-document.addEventListener('DOMContentLoaded', appStart)  // to dobre rysowanie
+document.addEventListener('DOMContentLoaded', appStart)  // to dobre
 let canvass
 let myPS
 
@@ -61,13 +61,13 @@ window.addEventListener("load", () => {
     function draw(e) {
         if (!painting) return;
         ctx.lineWidth = 10;         // grubość pędzla
-        ctx.linrCap = "round";
+        ctx.lineCap = "round";
         ctx.strokeStyle = "green"   //kolor pędzla
 
         ctx.lineTo(e.clientX, e.clientY);
         ctx.stroke();
         ctx.beginPath();
-        ctx.MooveTo(e.client, e.clientY)
+        ctx.moveTo(e.client, e.clientY)
     }
 
     canvas.addEventListner("mousedown", startPosition);
