@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<canvas id="canvas"></canvas>
     <div id="menu">
         <button id="circleBrush"></button>
         <button id="squareBrush"></button>
@@ -17,14 +18,44 @@
         <button id="btnLight">Light</button>
         <button id="btnContrast">Contrast</button>
         <button id="circle">Circle</button>
-
+        <button id="btnLoad">Load</button>
+        <button id="btnClear">Clear</button>
+        <select name="color" id="colorSelect">
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+        </select>
+        <select name="widthLine" id="lineSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="32">32</option>
+            <option value="44">44</option>
+            <option value="50">50</option>
+        </select>
+        <select name="brush" id="brushSelect">
+            <option value="round">Round</option>
+            <option value="bevel">Bevel</option>
+            <option value="miter">Miter</option>
+        </select>
     </div>
-    <canvas id="canvas" width="800" height="600">
 
-
-        <script type="text/javascript" src="./fotoshop.js"></script>
-        <script type="text/javascript" src="./script.js"></script>
-        <script type="text/javascript" src="./draw.js"></script>
+<script src="photoShop.js"></script>
 </body>
 
 </html>

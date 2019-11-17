@@ -5,10 +5,7 @@ body
 
 
 #canvas {
-    position: absolute;
-    background: rgb(211, 211, 211); 
-    width: 800px;
-    height: 600px;
+    background: rgb(211, 211, 211);
 }
 
 .brush {
