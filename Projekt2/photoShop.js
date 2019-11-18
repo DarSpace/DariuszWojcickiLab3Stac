@@ -69,7 +69,7 @@ class Filter {
             canvasData.data[i] = (canvasData.data[i] + canvasData.data[i + 4]) / 2
             canvasData.data[i + 1] = (canvasData.data[i + 1] + canvasData.data[i + 5]) / 2
             canvasData.data[i + 2] = (canvasData.data[i + 2] + canvasData.data[i + 6]) / 2
-            // canvasData.data[i + 3] -= amount
+
         }
         this.ctx.putImageData(canvasData, 0, 0)
     }
