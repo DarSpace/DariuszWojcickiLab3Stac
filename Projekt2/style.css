@@ -3,7 +3,7 @@ body
 {
    
    background-image: url(bc.jpg) ;
- 
+   
 }
 
 #boxcanvas
@@ -42,11 +42,12 @@ body
 
 #menu{
     margin-left: 10px;
+    
 }
 
 /* buttons */  
 
-#btnDarken, #btnLight, #btnContrast, #btnLoad, #btnClear, #colorSelect, #lineSelect, #brushSelect 
+#btnDarken, #btnLight, #btnContrast, #btnLoad, #btnClear, #colorSelect, #lineSelect, #brushSelect, #btnBlur, #btnNoBlur
 {
     display:inline-block;
     border:3px solid #070206;
