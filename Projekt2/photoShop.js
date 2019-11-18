@@ -18,6 +18,8 @@ class PhotoShop {
         document.querySelector('#colorSelect').addEventListener('change', () => this.changeColor());
         document.querySelector('#lineSelect').addEventListener('change', () => this.changeLineWidth());
         document.querySelector('#brushSelect').addEventListener('change', () => this.changeBrush());
+
+
         this.canvas.addEventListener('mousedown', (e) => {
             this.painting = true;
             this.draw(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop, false);
@@ -33,17 +35,25 @@ class PhotoShop {
         this.ctx.strokeStyle = 'green';
         this.ctx.lineWidth = 1;
         this.ctx.lineJoin = "round";
+
+        import drawing from './draw';
+        console.log(drawing.draw());
+
+
     }
+    ;
+
+
 
     darkOrLighter(darkOrLight) {
-        if(darkOrLight === 'dark') {
+        if (darkOrLight === 'dark') {
             if (this.brightness <= 0.1) this.brightness = 0.1;
             this.brightness -= 0.1;
         } else if (darkOrLight === 'light') {
-            if(this.brightness >= 2) this.brightness = 2;
+            if (this.brightness >= 2) this.brightness = 2;
             this.brightness += 0.1;
         }
-        this.brightness = Math.round(this.brightness * 10)/10;
+        this.brightness = Math.round(this.brightness * 10) / 10;
         this.ctx.filter = 'brightness(' + this.brightness + ')';
         this.ctx.drawImage(this.image, 0, 0);
     }
@@ -56,22 +66,22 @@ class PhotoShop {
     clear() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
-
-    draw(x, y, isDown) {
-        if(this.painting) {
-            if(isDown) {
-                this.ctx.beginPath();
-                this.ctx.moveTo(this.lastX, this.lastY);
-                this.ctx.lineTo(x, y);
-                this.ctx.closePath();
-                this.ctx.stroke();
+    /*
+        draw(x, y, isDown) {
+            if (this.painting) {
+                if (isDown) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(this.lastX, this.lastY);
+                    this.ctx.lineTo(x, y);
+                    this.ctx.closePath();
+                    this.ctx.stroke();
+                }
+                this.lastX = x;
+                this.lastY = y;
             }
-            this.lastX = x;
-            this.lastY = y;
+            console.log(this.color);
         }
-        console.log(this.color);
-    }
-
+    */
     changeColor() {
         this.ctx.strokeStyle = document.querySelector('#colorSelect').value;
     }
@@ -79,7 +89,7 @@ class PhotoShop {
     changeBrush() {
         const temp = document.querySelector('#brushSelect').value;
         this.ctx.lineJoin = document.querySelector('#brushSelect').value;
-        switch(temp) {
+        switch (temp) {
             case 'round':
                 this.ctx.lineCap = temp;
                 break;

@@ -5,27 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bieda Photoshop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
 
 </head>
 
 <body>
-<canvas id="canvas"></canvas>
+
     <div id="menu">
-        <button id="circleBrush"></button>
-        <button id="squareBrush"></button>
         <button id="btnDarken">Darken</button>
         <button id="btnLight">Light</button>
         <button id="btnContrast">Contrast</button>
-        <button id="circle">Circle</button>
         <button id="btnLoad">Load</button>
         <button id="btnClear">Clear</button>
+
         <select name="color" id="colorSelect">
             <option value="green">Green</option>
             <option value="blue">Blue</option>
             <option value="red">Red</option>
             <option value="yellow">Yellow</option>
         </select>
+
         <select name="widthLine" id="lineSelect">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -52,10 +54,25 @@
             <option value="round">Round</option>
             <option value="bevel">Bevel</option>
             <option value="miter">Miter</option>
-        </select>
+        </select> </br> </br> </br> </br>
+
+    </div>
+    <div id="boxcanvas">
+        <canvas id="canvas"></canvas>
     </div>
 
-<script src="photoShop.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="photoShop.js"></script>
+    <script src="draw.js"></script>
+
 </body>
 
 </html>

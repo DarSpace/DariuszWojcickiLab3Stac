@@ -1,11 +1,20 @@
+
 body 
 {
-    background: rgba(200, 255, 0, 0.103);
+   
+   background-image: url(bc.jpg) ;
+ 
 }
 
+#boxcanvas
+{
+    margin-left: 10%;
+}
 
 #canvas {
-    background: rgb(211, 211, 211);
+    background: rgba(211, 211, 211, 0);
+    
+
 }
 
 .brush {
@@ -20,28 +29,6 @@ body
     background: pink;
 }
 
-.circle {
-    border-radius: 50%;
-}
-
-.red {
-    background: red;
-}
-
-#squareBrush {
-    width: 25px;
-    height: 25px;
-    background: pink;
-    border: none;
-}
-
-#circleBrush {
-    width: 25px;
-    height: 25px;
-    background: pink;
-    border: none;
-    border-radius: 50%;
-}
 
 @keyframes dissapear {
     0% {
@@ -52,3 +39,27 @@ body
         opacity: 0;
     }
 }
+
+#menu{
+    margin-left: 10px;
+}
+
+/* buttons */  
+
+#btnDarken, #btnLight, #btnContrast, #btnLoad, #btnClear, #colorSelect, #lineSelect, #brushSelect 
+{
+    display:inline-block;
+    border:3px solid #070206;
+    border-radius: 5px 5px 5px 5px;
+    cursor:pointer;
+    text-align: center;
+    margin-top: 10px;
+    background: black;
+    color:#ffffff;
+    font-size:12px;
+    font-weight:bold;
+    height: auto px; 
+    width: auto px;
+}
+
+
