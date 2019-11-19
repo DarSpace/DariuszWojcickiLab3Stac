@@ -15,18 +15,29 @@
 <body>
 
     <div id="menu">
-        <label for="BrightnessSlider">Dark or Light (<span id="BrightnessValue">0</span>)</label>
+        <div class="row">
+            <!-- suwaczki -->
+            <div class="col-12 col-md-3">
+                <label for="BrightnessSlider">Dark or Light (<span id="BrightnessValue">0</span>)</label>
+                <input id="BrightnessSlider" type="range" value="0" min="-100" max="100">
+            </div>
+            <div class="col-12 col-md-3">
+                <label for="BlurSlider">Blur (<span id="BlurValue">0</span>)</label>
+                <input type="range" id="BlurSlider" value="0" min="0" max="20">
+            </div>
+            <div class="col-12 col-md-3">
+                <label for="ContrastSlider">Contrast (<span id="ContrastValue">0</span>)</label>
+                <input type="range" id="ContrastSlider" value="0" min="-100" max="100">
+            </div>
+            <div class="col-12 col-md-3">
+                <label for="SepiaSlider">Sepia (<span id="SepiaValue">0</span>)</label>
+                <input type="range" id="SepiaSlider" value="0" min="0" max="100">
+            </div>
+        </div>
 
-        <input id="BrightnessSlider" type="range" value="0" min="-100" max="100">
-
-        <label for="ContrastSlider">Contrast (<span id="ContrastValue">0</span>)</label>
-
-        <input type="range" id="ContrastSlider" value="0" min="-100" max="100">
-
-
+        <!--przyciski-->
         <button id="btnLoad">Load</button>
         <button id="btnClear">Clear</button>
-        <button id="btnBlur">Blur</button>
 
 
 
@@ -65,7 +76,7 @@
             <!--rodzaj pędzelka -->
             <option value="round">Round</option> <!-- koło -->
             <option value="bevel">Bevel</option> <!-- kreseczki -->
-            <option value="miter">Miter</option> <!-- kwadracik -->
+            <option value="miter">Miter</option> <!-- kreska -->
         </select> </br> </br> </br> </br>
 
     </div>

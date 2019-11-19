@@ -1,8 +1,13 @@
-class Filter {        // klasa z filtrami
+class Filter {   // klasa z filtrami
+    filters = '';
     brightnessSlider;
     contrastSlider;
     brightnessValue;
     contrastValue;
+    blurSlider;
+    blurValue;
+    sepiaSlider;
+    sepiaValue;
     image;
     canvas;
     ctx;
@@ -13,7 +18,10 @@ class Filter {        // klasa z filtrami
         this.brightnessValue = document.getElementById('BrightnessValue');
         this.contrastSlider = document.getElementById('ContrastSlider');     // kontrast 
         this.contrastValue = document.getElementById('ContrastValue');
-        document.querySelector('#btnBlur').addEventListener('click', () => { this.blurFilter() })   //rozmycie 
+        this.blurSlider = document.getElementById('BlurSlider');          // rozmycie
+        this.blurValue = document.getElementById('BlurValue');
+        this.sepiaSlider = document.getElementById('SepiaSlider');      //sepia
+        this.sepiaValue = document.getElementById('SepiaValue');
 
         this.ctx = canvas.getContext('2d');
         this.image = new Image();
@@ -26,6 +34,14 @@ class Filter {        // klasa z filtrami
         this.contrastSlider.addEventListener('change', (event) => {                 // wartości przy kontraście 
             this.contrastValue.innerHTML = event.currentTarget.value;
             this.changeContrast();
+        });
+        this.blurSlider.addEventListener('change', (event) => {             // wartości przy rozmyciu 
+            this.blurValue.innerHTML = event.currentTarget.value;
+            this.blurFilter();
+        });
+        this.sepiaSlider.addEventListener('change', (event) => {           // wartosci przy sepi
+            this.sepiaValue.innerHTML = event.currentTarget.value + '%';
+            this.sepiaFilter();
         });
     }
 
@@ -61,8 +77,23 @@ class Filter {        // klasa z filtrami
     }
 
 
+    blurFilter() {                                         // rozmycie 
+        const blur = parseInt(this.blurSlider.value);
+        if (this.sepiaSlider.value != 0) {
+            const sepia = parseInt(this.sepiaSlider.value);
+            this.ctx.filter = 'blur(' + blur + 'px) sepia(' + sepia + '%)';         // sprawdzenie czy suwaczki sa ustawione na wartosci i jak sa to ją wywołuje zeby sepia działała z blurem 
+        } else {
+            this.ctx.filter = 'blur(' + blur + 'px) ';
+        }
+        if (!this.painted) return;
+        this.drawImage(this.image);
+        this.changeContrast();
+        this.changeBrightness();
+    }
 
-
+    clear() {
+        this.painted = false;
+    }
 
     drawImage(image) {                       //wczytanie obrazka 
         this.ctx.drawImage(image, 0, 0);
@@ -78,29 +109,35 @@ class Filter {        // klasa z filtrami
         }
     }
 
-
-    blurFilter() {                                                                               // rozmycie 
-        let canvasData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-        for (let i = 0; i < canvasData.data.length; i += 4) {
-            canvasData.data[i] = (canvasData.data[i] + canvasData.data[i + 4]) / 2
-            canvasData.data[i + 1] = (canvasData.data[i + 1] + canvasData.data[i + 5]) / 2
-            canvasData.data[i + 2] = (canvasData.data[i + 2] + canvasData.data[i + 6]) / 2
+    sepiaFilter() {                                           // sepia filter 
+        const sepia = parseInt(this.sepiaSlider.value);
+        this.filters = this.filters + 'sepia(' + sepia + '%) ';
+        if (this.blurSlider.value != 0) {
+            const blur = parseInt(this.blurSlider.value);
+            this.ctx.filter = 'sepia(' + sepia + '%) blur(' + blur + 'px)';     // sprawdzenie czy suwaczki sa ustawione na wartosci i jak sa to ją wywołuje zeby sepia działała z blurem
+        } else {
+            this.ctx.filter = 'sepia(' + sepia + '%)';
         }
-        this.ctx.putImageData(canvasData, 0, 0)
+        if (!this.painted) return;
+        this.drawImage(this.image);
+        this.changeContrast();
+        this.changeBrightness();
     }
 
 
 
-    onLoad() {                           //wczytanie obrazka
+
+    onLoad() {                          //wczytywanie obrazka
         this.drawImage(this.image);
         this.painted = true;
-
+        this.changeContrast();
+        this.changeBrightness();
     }
 }
 
 
 
-class PhotoShop {
+class PhotoShop {                                // klasa z pędzelkami
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
     image = new Image();
@@ -140,9 +177,13 @@ class PhotoShop {
         this.filter.onLoad();
     }
 
-    clear() {                       // wyczyszczenie obrazka 
+    clear() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.filter.clear();
+
     }
+
+
 
     draw(x, y, isDown) {          // funkca rysowania 
         if (this.painting) {
