@@ -1,4 +1,4 @@
-class Filter {
+class Filter {        // klasa z filtrami
     brightnessSlider;
     contrastSlider;
     brightnessValue;
@@ -9,32 +9,31 @@ class Filter {
     painted = false;
 
     constructor(canvas, image) {
-        this.brightnessSlider = document.getElementById('BrightnessSlider');
+        this.brightnessSlider = document.getElementById('BrightnessSlider');  // przyciemnianie i rozjascnianie
         this.brightnessValue = document.getElementById('BrightnessValue');
-        this.contrastSlider = document.getElementById('ContrastSlider');
+        this.contrastSlider = document.getElementById('ContrastSlider');     // kontrast 
         this.contrastValue = document.getElementById('ContrastValue');
-        document.querySelector('#btnBlur').addEventListener('click', () => { this.blurFilter() })
+        document.querySelector('#btnBlur').addEventListener('click', () => { this.blurFilter() })   //rozmycie 
 
         this.ctx = canvas.getContext('2d');
         this.image = new Image();
         this.image.src = image;
         this.canvas = canvas;
-        this.brightnessSlider.addEventListener('change', (event) => {
-            this.brightnessValue = event.currentTarget.value;
+        this.brightnessSlider.addEventListener('change', (event) => {          // wartosci przy przyciemnianiu i rozjaśnianiu 
+            this.brightnessValue.innerHTML = event.currentTarget.value;
             this.changeBrightness()
         });
-        this.contrastSlider.addEventListener('change', (event) => {
-            this.contrastValue = event.currentTarget.value;
+        this.contrastSlider.addEventListener('change', (event) => {                 // wartości przy kontraście 
+            this.contrastValue.innerHTML = event.currentTarget.value;
             this.changeContrast();
         });
     }
 
-    changeBrightness() {
+    changeBrightness() {                                               // filtr do przyciemniania i rozjasniania
         let imageData;
         if (!this.painted) return;
         const brightness = parseInt(this.brightnessSlider.value, 10);
-        this.redrawImage();
-
+        this.drawImage(this.image)
         imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
             imageData.data[i] += 255 * (brightness / 100);
@@ -45,13 +44,12 @@ class Filter {
         this.ctx.putImageData(imageData, 0, 0);
     }
 
-    changeContrast() {
+    changeContrast() {                           // kontrast 
         let imageData;
         const contrast = parseInt(this.contrastSlider.value, 10);
         const factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
         if (!this.painted) return;
-        this.redrawImage();
-
+        this.drawImage(this.image)
         imageData = this.ctx.getImageData(0, 0, this.image.width, this.image.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
             imageData.data[i] = this.tuneColor(factor * (imageData.data[i] - 128.0) + 128.0);
@@ -63,29 +61,14 @@ class Filter {
     }
 
 
-    blurFilter() {
-        let canvasData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-        for (let i = 0; i < canvasData.data.length; i += 4) {
-            canvasData.data[i] = (canvasData.data[i] + canvasData.data[i + 4]) / 2
-            canvasData.data[i + 1] = (canvasData.data[i + 1] + canvasData.data[i + 5]) / 2
-            canvasData.data[i + 2] = (canvasData.data[i + 2] + canvasData.data[i + 6]) / 2
-
-        }
-        this.ctx.putImageData(canvasData, 0, 0)
-    }
 
 
 
-    redrawImage() {
-        this.painted = true;
-        this.drawImage(this.image);
-    }
-
-    drawImage(image) {
+    drawImage(image) {                       //wczytanie obrazka 
         this.ctx.drawImage(image, 0, 0);
     }
 
-    tuneColor(value) {
+    tuneColor(value) {                    //zabezpieczenie zeby nie przekroczyło danych wartosci 
         if (value < 0) {
             return 0;
         } else if (value > 255) {
@@ -95,11 +78,23 @@ class Filter {
         }
     }
 
-    onLoad() {
+
+    blurFilter() {                                                                               // rozmycie 
+        let canvasData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        for (let i = 0; i < canvasData.data.length; i += 4) {
+            canvasData.data[i] = (canvasData.data[i] + canvasData.data[i + 4]) / 2
+            canvasData.data[i + 1] = (canvasData.data[i + 1] + canvasData.data[i + 5]) / 2
+            canvasData.data[i + 2] = (canvasData.data[i + 2] + canvasData.data[i + 6]) / 2
+        }
+        this.ctx.putImageData(canvasData, 0, 0)
+    }
+
+
+
+    onLoad() {                           //wczytanie obrazka
         this.drawImage(this.image);
         this.painted = true;
-        this.changeContrast();
-        this.changeContrast();
+
     }
 }
 
@@ -116,11 +111,11 @@ class PhotoShop {
     filter;
 
     constructor(canvasId) {
-        document.querySelector('#btnClear').addEventListener('click', () => this.clear());
-        document.querySelector('#colorSelect').addEventListener('change', () => this.changeColor());
-        document.querySelector('#lineSelect').addEventListener('change', () => this.changeLineWidth());
-        document.querySelector('#brushSelect').addEventListener('change', () => this.changeBrush());
-        this.canvas.addEventListener('mousedown', (e) => {
+        document.querySelector('#btnClear').addEventListener('click', () => this.clear());           // czyszczenie 
+        document.querySelector('#colorSelect').addEventListener('change', () => this.changeColor());    // jaki kolorek dzis wybierasz?
+        document.querySelector('#lineSelect').addEventListener('change', () => this.changeLineWidth());  // grubość lini 
+        document.querySelector('#brushSelect').addEventListener('change', () => this.changeBrush());     // rodzaj pędzla
+        this.canvas.addEventListener('mousedown', (e) => {                                               //rysowanie
             this.painting = true;
             this.draw(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop, false);
         });
@@ -134,22 +129,22 @@ class PhotoShop {
         this.ctx.strokeStyle = 'green';
         this.ctx.lineWidth = 1;
         this.ctx.lineJoin = "round";
-        document.querySelector('#btnLoad').addEventListener('click', () => this.load());
+        document.querySelector('#btnLoad').addEventListener('click', () => this.load());       // guziczek wczytania obrazka
         this.image.src = 'wis.jpg';
         this.filter = new Filter(this.canvas, this.image.src);
     }
 
 
 
-    load() {
+    load() {                         // load obrazka (guziczek)
         this.filter.onLoad();
     }
 
-    clear() {
+    clear() {                       // wyczyszczenie obrazka 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    draw(x, y, isDown) {
+    draw(x, y, isDown) {          // funkca rysowania 
         if (this.painting) {
             if (isDown) {
                 this.ctx.beginPath();
@@ -164,11 +159,11 @@ class PhotoShop {
         this.imageData = this.ctx.getImageData(0, 0, this.image.width, this.image.height);
     }
 
-    changeColor() {
+    changeColor() {                 //wybór koloru 
         this.ctx.strokeStyle = document.querySelector('#colorSelect').value;
     }
 
-    changeBrush() {
+    changeBrush() {                 // rodzaj pędzla 
         const temp = document.querySelector('#brushSelect').value;
         this.ctx.lineJoin = document.querySelector('#brushSelect').value;
         switch (temp) {
@@ -185,7 +180,7 @@ class PhotoShop {
 
     }
 
-    changeLineWidth() {
+    changeLineWidth() {    // gruność lini 
         this.ctx.lineWidth = document.querySelector('#lineSelect').value;
     }
 }
