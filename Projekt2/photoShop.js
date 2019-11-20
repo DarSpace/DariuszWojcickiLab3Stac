@@ -125,8 +125,6 @@ class Filter {   // klasa z filtrami
     }
 
 
-
-
     onLoad() {                          //wczytywanie obrazka
         this.drawImage(this.image);
         this.painted = true;
@@ -134,7 +132,6 @@ class Filter {   // klasa z filtrami
         this.changeBrightness();
     }
 }
-
 
 
 class PhotoShop {                                // klasa z pędzelkami
@@ -172,7 +169,6 @@ class PhotoShop {                                // klasa z pędzelkami
     }
 
 
-
     load() {                         // load obrazka (guziczek)
         this.filter.onLoad();
     }
@@ -182,7 +178,6 @@ class PhotoShop {                                // klasa z pędzelkami
         this.filter.clear();
 
     }
-
 
 
     draw(x, y, isDown) {          // funkca rysowania 
