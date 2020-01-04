@@ -1,1 +1,65 @@
-    
+    body
+    {
+        background: greenyellow;
+    }
+
+    .NoteBox
+    {
+        padding: 20px;
+        background: lightblue;
+        min-height: 204px;
+        min-width: 200px;        
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: 2px solid rgb(204, 255, 0);
+       /* box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.432); */
+      
+    }
+
+    .NoteBox .NoteBar
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 30px;
+        background: rgb(53, 111, 235);
+        width: 197px;
+        
+        
+    }
+
+    .NoteBar 
+    {
+        cursor: move; 
+    }
+
+
+
+    .NoteBox textarea
+    {
+        position: absolute;
+        top: 30px;
+        padding: 10px 10px;
+        box-sizing: border-box;
+        max-width: 198px;
+        min-width: 198px;
+        width: 198px;
+        min-height: 172px;
+        max-height: 172px; 
+        background: rgba(231, 231, 231, 0);
+        border: none;
+        
+    }
+
+.NoteBox:hover
+{
+    z-index: 1;
+}
+
+    /* 
+    .NoteBox .NoteBar :hover
+    {
+        cursor: move; 
+    }
+    */

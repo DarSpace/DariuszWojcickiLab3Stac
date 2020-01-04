@@ -47,14 +47,14 @@ class Filter {   // klasa z filtrami
 
     changeBrightness() {                                               // filtr do przyciemniania i rozjasniania
         let imageData;
-        if (!this.painted) return;
-        const brightness = parseInt(this.brightnessSlider.value, 10);
+        if (!this.painted) return
+        const brightness = parseInt(this.brightnessSlider.value, 10)
         this.drawImage(this.image)
         imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
-            imageData.data[i] += 255 * (brightness / 100);
-            imageData.data[i + 1] += 255 * (brightness / 100);
-            imageData.data[i + 2] += 255 * (brightness / 100);
+            imageData.data[i] += 255 * (brightness / 100)
+            imageData.data[i + 1] += 255 * (brightness / 100)
+            imageData.data[i + 2] += 255 * (brightness / 100)
         }
 
         this.ctx.putImageData(imageData, 0, 0);
@@ -64,13 +64,13 @@ class Filter {   // klasa z filtrami
         let imageData;
         const contrast = parseInt(this.contrastSlider.value, 10);
         const factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
-        if (!this.painted) return;
+        if (!this.painted) return
         this.drawImage(this.image)
-        imageData = this.ctx.getImageData(0, 0, this.image.width, this.image.height);
+        imageData = this.ctx.getImageData(0, 0, this.image.width, this.image.height)
         for (let i = 0; i < imageData.data.length; i += 4) {
-            imageData.data[i] = this.tuneColor(factor * (imageData.data[i] - 128.0) + 128.0);
-            imageData.data[i + 1] = this.tuneColor(factor * (imageData.data[i + 1] - 128.0) + 128.0);
-            imageData.data[i + 2] = this.tuneColor(factor * (imageData.data[i + 2] - 128.0) + 128.0);
+            imageData.data[i] = this.tuneColor(factor * (imageData.data[i] - 128.0) + 128.0)
+            imageData.data[i + 1] = this.tuneColor(factor * (imageData.data[i + 1] - 128.0) + 128.0)
+            imageData.data[i + 2] = this.tuneColor(factor * (imageData.data[i + 2] - 128.0) + 128.0)
         }
 
         this.ctx.putImageData(imageData, 0, 0);
@@ -80,15 +80,15 @@ class Filter {   // klasa z filtrami
     blurFilter() {                                         // rozmycie 
         const blur = parseInt(this.blurSlider.value);
         if (this.sepiaSlider.value != 0) {
-            const sepia = parseInt(this.sepiaSlider.value);
-            this.ctx.filter = 'blur(' + blur + 'px) sepia(' + sepia + '%)';         // sprawdzenie czy suwaczki sa ustawione na wartosci i jak sa to ją wywołuje zeby sepia działała z blurem 
+            const sepia = parseInt(this.sepiaSlider.value)
+            this.ctx.filter = 'blur(' + blur + 'px) sepia(' + sepia + '%)'         // sprawdzenie czy suwaczki sa ustawione na wartosci i jak sa to ją wywołuje zeby sepia działała z blurem 
         } else {
-            this.ctx.filter = 'blur(' + blur + 'px) ';
+            this.ctx.filter = 'blur(' + blur + 'px) '
         }
-        if (!this.painted) return;
-        this.drawImage(this.image);
-        this.changeContrast();
-        this.changeBrightness();
+        if (!this.painted) return  // zabezpieczenie przed edycja obrazka ktory nie jest zaladowany (zeby nie edytowac obrazka ktorego jeszcze nie ma)
+        this.drawImage(this.image)
+        this.changeContrast()
+        this.changeBrightness()
     }
 
     clear() {
@@ -101,11 +101,11 @@ class Filter {   // klasa z filtrami
 
     tuneColor(value) {                    //zabezpieczenie zeby nie przekroczyło danych wartosci 
         if (value < 0) {
-            return 0;
+            return 0
         } else if (value > 255) {
-            return 255;
+            return 255
         } else {
-            return value;
+            return value
         }
     }
 
@@ -118,9 +118,9 @@ class Filter {   // klasa z filtrami
         } else {
             this.ctx.filter = 'sepia(' + sepia + '%)';
         }
-        if (!this.painted) return;
-        this.drawImage(this.image);
-        this.changeContrast();
+        if (!this.painted) return
+        this.drawImage(this.image)
+        this.changeContrast()
         this.changeBrightness();
     }
 
@@ -183,10 +183,10 @@ class PhotoShop {                                // klasa z pędzelkami
     draw(x, y, isDown) {          // funkca rysowania 
         if (this.painting) {
             if (isDown) {
-                this.ctx.beginPath();
-                this.ctx.moveTo(this.lastX, this.lastY);
-                this.ctx.lineTo(x, y);
-                this.ctx.closePath();
+                this.ctx.beginPath()
+                this.ctx.moveTo(this.lastX, this.lastY)
+                this.ctx.lineTo(x, y)
+                this.ctx.closePath()
                 this.ctx.stroke();
             }
             this.lastX = x;
