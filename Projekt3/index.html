@@ -8,37 +8,32 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="notatki.js"></script>
+
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
     <div class="NoteBox">
-        <!--notatka-->
-
-        <div class="NoteBar">
-            <!--element za który bedziemy przesuwac notatke-->
-            <textarea></textarea>
+        <div class="Note">
+            <input type="text" id="noteTitle" placeholder="Podaj tytuł notatki">
+            <textarea type="text" id="noteText"> </textarea>
         </div>
-
-        <button class="addNoteBox"> add new sticker </button>
-
+        <div class="menuNotes">
+            <input type="submit" id="addNote">
+            <select id="color">
+                <option value="red">Czerwony</option>
+                <option value="blue">Niebieski</option>
+                <option value="aqua">Błękitny</option>
+                <option value="blueviolet">Fioletowy</option>
+                <option value="yellow">Żółty</option>
+            </select>
+        </div>
+    </div>
+    <!-- kontener na notatki -->
+    <div id="tasks">
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -48,6 +43,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="notatki.js"></script>
 </body>
 
 </html>

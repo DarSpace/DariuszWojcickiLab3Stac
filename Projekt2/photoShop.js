@@ -86,9 +86,9 @@ class Filter {   // klasa z filtrami
             this.ctx.filter = 'blur(' + blur + 'px) '
         }
         if (!this.painted) return  // zabezpieczenie przed edycja obrazka ktory nie jest zaladowany (zeby nie edytowac obrazka ktorego jeszcze nie ma)
-        this.drawImage(this.image)
-        this.changeContrast()
-        this.changeBrightness()
+        this.drawImage(this.image);
+        this.changeContrast();
+        this.changeBrightness();
     }
 
     clear() {
@@ -103,9 +103,9 @@ class Filter {   // klasa z filtrami
         if (value < 0) {
             return 0
         } else if (value > 255) {
-            return 255
+            return 255;
         } else {
-            return value
+            return value;
         }
     }
 
@@ -119,8 +119,8 @@ class Filter {   // klasa z filtrami
             this.ctx.filter = 'sepia(' + sepia + '%)';
         }
         if (!this.painted) return
-        this.drawImage(this.image)
-        this.changeContrast()
+        this.drawImage(this.image);
+        this.changeContrast();
         this.changeBrightness();
     }
 
@@ -183,10 +183,10 @@ class PhotoShop {                                // klasa z pędzelkami
     draw(x, y, isDown) {          // funkca rysowania 
         if (this.painting) {
             if (isDown) {
-                this.ctx.beginPath()
-                this.ctx.moveTo(this.lastX, this.lastY)
-                this.ctx.lineTo(x, y)
-                this.ctx.closePath()
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.lastX, this.lastY);
+                this.ctx.lineTo(x, y);
+                this.ctx.closePath();
                 this.ctx.stroke();
             }
             this.lastX = x;

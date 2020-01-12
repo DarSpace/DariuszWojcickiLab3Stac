@@ -1,134 +1,153 @@
-/* const notesArr = []
+class Notes {
+    id;
+    pickupId;
+    title;
+    text;
+    color;
+    createDate;
+    isPickedUp;
 
-// klasa notatki
-class Note {
+    constructor(id, title, text, color) {
+        this.pickupId = id;
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.color = color;
+        this.isPickedUp = false;
+        this.createDate = new Date();
 
-    constructor(title = '', description = '') {
-        this.title = title
-        this.description = description
-        this.color = 'red'
-        this.created = Date().toISOString()
-        this.pinned = false
+        //===========================================================
 
+
+
+        //===========================================================
+
+
+    }
+}
+
+
+
+class Engine {
+    notesArr = [];
+
+
+
+
+    constructor() {
+
+
+        //===========================================================
+
+
+        document.querySelector('#addNote').addEventListener('click', () => this.createNewNote(document.querySelector('#noteTitle').value, document.querySelector('#noteText').value, document.querySelector('#color').value));  // przycisk do dodawania notatki
+
+        //===========================================================
+
+
+
+        if (typeof localStorage !== 'undefined') {
+
+            if (localStorage.getItem('notes') != null) {
+                this.notesArr = JSON.parse(localStorage.getItem('notes'));
+                this.show();
+            }
+        }
 
 
     }
 
 
+    createNewNote(title, text, color) {
+        if (this.notesArr.length < 1) {
+            this.notesArr.push(new Notes(0, title, text, color));
+        } else {
+            let maxId = 0;
+            this.notesArr.forEach((note, index) => {
+                if (maxId < note.id) {
+                    maxId = note.id;
+                }
+            });
+            this.notesArr.push(new Notes(maxId + 1, title, text, color));
+        }
+        this.saveNotes();
+        this.show();
+    }
+
+    deleteNote(id) {
+        if (this.notesArr.length < 1) {
+            console.log('Note doesnt exist!');
+        } else {
+            this.notesArr.forEach((note, i) => {
+                if (note.id === id) {
+                    this.notesArr.splice(i, 1);
+                }
+            });
+        }
+        this.saveNotes();
+        this.show();
+    }
+
+    pickUpNote(id) {
+        if (this.notesArr.length < 1) {
+            return;
+        } else {
+            let minPickupId = 0;
+            this.notesArr.forEach((note) => {
+                if (minPickupId > note.pickupId) {
+                    minPickupId = note.pickupId;
+                }
+            });
+            this.notesArr.forEach((note) => {
+                if (note.id === id) {
+                    console.log(note);
+                    note.isPickedUp = true;
+                    note.pickupId = minPickupId - 1;
+                }
+            });
+        }
+        this.show();
+        this.saveNotes();
+    }
 
 
+    unPickUpNote(id) {
+        if (this.notesArr.length < 1) {
+            return;
+        } else {
+            this.notesArr.forEach((note, index) => {
+                if (note.id === id) {
+                    note.isPickedUp = false;
+                    note.pickupId = id;
+                }
+            });
+        }
+        this.show();
+        this.saveNotes();
+    }
 
-}
+    show() {
+        const tempNotesArr = this.notesArr.sort((a, b) => {
+            return a.pickupId - b.pickupId;
+        });
+        let tempHTML = '';
+        tempNotesArr.forEach((note, index) => {
+            const id = note.id;
+            tempHTML += note.title + '<br>';
+            tempHTML += note.text + '<br>';
+            tempHTML += '<button onclick="engine.deleteNote(' + id + ')">Usuń</button><br>';
+            if (note.isPickedUp) {
+                tempHTML += '<button onclick="engine.unPickUpNote(' + id + ')">Odepnij</button><br>';
+            } else {
+                tempHTML += '<button onclick="engine.pickUpNote(' + id + ')">Przypnij</button><br>';
+            }
+            tempHTML += '<br>' + note.createDate + '<br><br>';
+        });
+        document.querySelector('#tasks').innerHTML = tempHTML;
+    }
 
-//zapisanie do localStorage
-localStorage.setItem('notes', JSON.stringify(notesArr))
-
-//odczyt z localStrage
-
-
-
-
-//sprawdzic czy istnieje dana notatka
-if (typeof localStorage !== 'undefined')   //sprawdzenie czy jest zdefiniowana 
-{
-
-    if (localStorage.getItem('notes') != null) {
-        notesArr = JSON.parse(localStorage.getItem('notes'))
+    saveNotes() {
+        localStorage.setItem('notes', JSON.stringify(this.notesArr));
     }
 }
-//-----------------------------------------------------------------------------------
-
-
-
-notesArr = JSON.parse(localStorage.getItem('notes'))
-
-*/
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// ======= NOTATKA 
-
-(function () {
-
-    var draggedEl,    //element który bedziemy przeciągać 
-        onDragStart,
-        onDrag,
-        onDragEnd,
-        grabPointX, //absolutne położenie na pasku danej notatki
-        grabPointY,
-        createNoteBox;
-
-
-    onDragStart = function (e)   //funkcja która przyjmuje obiekt zdarzenia 
-    {
-        var boundingClientRect;
-        if (e.target.className.indexOf('NoteBar') === -1) // element za który bedziemy chwytac, jezeli to zdarzenie nie bedzie posiadało klasy "NoteBar" to niebedziemy chcieli wywoływać tej funkcji czyli jak niebedziemy przeciągac to niebedzie funkcja wywoływana  
-        {
-            return;
-        }
-
-        draggedEl = this;
-
-        boundingClientRect = draggedEl.getBoundingClientRect(); // pozycja faktycznia w przegladarce danego elemendtu 
-
-
-
-
-        grabPointY = boundingClientRect.top - e.clientY;
-        grabPointX = boundingClientRect.left - e.clientX;
-    };
-
-
-
-    onDrag = function (e) {             // przyjmuje jako parametr obiekt zdarzenia ze jak nieprzeciągamy to niewywołujemy tej funkcji       
-        if (!draggedEl) {
-            return;
-        }
-
-        var posisionX = e.clientX + grabPointX,   // pozycja koncowa okienka 
-            posisionY = e.clientY + grabPointY;
-
-
-        if (posisionX < 0) {
-            posisionX = 0;
-        }
-
-        if (posisionY < 0) {
-            posisionY = 0;
-        }
-
-        draggedEl.style.transform = "translateX(" + posisionX + "px) translateY(" + posisionY + "px)";
-
-
-    };
-    onDragEnd = function () // (...)
-    {
-        draggedEl = null;
-        grabPointX = null;
-        grabPointY = null;
-    };
-
-    createNoteBox = function () {     // dodawanie nowej notatki 
-        var BoxElement = document.createElement('div'),
-            BarElement = document.createElement('div'),
-            textareaElement = document.createElement('textarea');
-
-        BoxElement.classList.add('NoteBox'),
-            BarElement.classList.add('NoteBar');
-
-        BoxElement.appendChild(BarElement);
-        BoxElement.appendChild(textareaElement);
-
-        BoxElement.addEventListener('mousedown', onDragStart, false);
-
-        document.body.appendChild(BoxElement);
-    };
-
-
-    addNoteBoxElement = document.querySelector('.addNoteBox');
-    addNoteBoxElement.addEventListener('click', createNoteBox, false);
-    document.addEventListener('mousemove', onDrag, false);  // ( ... ) 
-    document.addEventListener('mouseup', onDragEnd, false); // kiedy puscimy myszke chcemy wywołac onDragEnd
-
-
-});
-// ========
+const engine = new Engine();
