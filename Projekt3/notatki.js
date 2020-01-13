@@ -16,11 +16,6 @@ class Notes {
         this.isPickedUp = false;
         this.createDate = new Date();
 
-        //===========================================================
-
-
-
-        //===========================================================
 
 
     }
@@ -130,10 +125,14 @@ class Engine {
         const tempNotesArr = this.notesArr.sort((a, b) => {
             return a.pickupId - b.pickupId;
         });
-        let tempHTML = '';
+        document.querySelector('#tasks').innerHTML = " ";
+
+
         tempNotesArr.forEach((note, index) => {
             const id = note.id;
-            tempHTML += note.title + '<br>';
+            let tempHTML = '';
+            tempHTML += '<div class = "NoteBox" style = " background-color:' + note.color + '; ">';   // tu pojawiam 
+            tempHTML += '<b>' + note.title + '</b>' + '<br>';
             tempHTML += note.text + '<br>';
             tempHTML += '<button onclick="engine.deleteNote(' + id + ')">Usuń</button><br>';
             if (note.isPickedUp) {
@@ -142,8 +141,9 @@ class Engine {
                 tempHTML += '<button onclick="engine.pickUpNote(' + id + ')">Przypnij</button><br>';
             }
             tempHTML += '<br>' + note.createDate + '<br><br>';
+            document.querySelector('#tasks').innerHTML += tempHTML;
         });
-        document.querySelector('#tasks').innerHTML = tempHTML;
+
     }
 
     saveNotes() {
