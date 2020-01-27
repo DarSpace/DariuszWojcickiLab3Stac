@@ -1,0 +1,9 @@
+#ball{
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 15;
+    border: 1px solid rgb(106, 252, 69);
+    background: rgb(33, 255, 118);
+}

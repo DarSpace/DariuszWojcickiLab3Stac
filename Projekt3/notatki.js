@@ -5,7 +5,7 @@ class Notes {    // trzymam pola do notatki
     text;
     color;
     createDate;
-    isPinned; // przypięcie
+    isPinned;
 
     constructor(id, title, text, color) {
         this.pinnedId = id;
@@ -36,9 +36,8 @@ class Engine {         //klasa notatek
 
 
 
-        if (typeof localStorage !== 'undefined') {   // czy istnieje local storage
-
-            if (localStorage.getItem('notes') != null) {            // czy istnieje jakas notatka czyli jak nie jest pusty to pobiera notatke i wyswietlam notatke )
+        if (typeof localStorage !== 'undefined') {                          // czy istnieje local storage
+            if (localStorage.getItem('notes') != null) {                    // czy istnieje jakas notatka czyli jak nie jest pusty to pobiera notatke i wyswietlam notatke )
                 this.notesArr = JSON.parse(localStorage.getItem('notes'));
                 this.show();
             }
@@ -70,7 +69,7 @@ class Engine {         //klasa notatek
         } else {
             this.notesArr.forEach((note, i) => {  // szukamy notatki o ID które chcemy usunąć  
                 if (note.id === id) {
-                    this.notesArr.splice(i, 1);    // usunięcie z tablicy notatnke 1 notatke 
+                    this.notesArr.splice(i, 1);    // usunięcie z tablicy notatnke 1 notatke  i zastepuje je istniejącymi
                 }
             });
         }
@@ -83,7 +82,7 @@ class Engine {         //klasa notatek
             return;
         } else {
             let minpinnedId = 0;
-            this.notesArr.forEach((note) => {            //wykonuje sie tyle razy ilke jest otatek
+            this.notesArr.forEach((note) => {            //wykonuje sie tyle razy ile jest notatek
                 if (minpinnedId > note.pinnedId) {      // szuka najmniejszego pinnedId czyli PinnedID  we wszystkich notatkach najmniejszej notatki przypiętej najwyżej notatki
                     minpinnedId = note.pinnedId;
                 }
@@ -127,11 +126,11 @@ class Engine {         //klasa notatek
             tempHTML += '<div class="card">';
             tempHTML += '<div class="card-body m-l-auto m-r-auto"><div class="row py-1 mb-4 mt-0" style="background-color:' + note.color + '; "></div><h5 class="card-title mt-3">' + note.title + '</h5>';
             tempHTML += '<p class="card-text">' + note.text + '</p>';
-            tempHTML += '<div class="row"><button onclick="engine.deleteNote(' + id + ')" class="btn btn-danger col-3 col-md-5">Usuń</button><br><div class="flex-fill"></div>';
+            tempHTML += '<div class="row"><button onclick="engine.deleteNote(' + id + ')" class="btn btn-danger col-3 col-md-5">Usuń</button><br><div class="flex-fill"></div>'; // przycisk do usuwania notatki
             if (note.isPinned) {
-                tempHTML += '<button onclick="engine.unpinnedNote(' + id + ')" class="btn btn-warning col-3 col-md-5">Odepnij</button><br>';
+                tempHTML += '<button onclick="engine.unPinnedNote(' + id + ')" class="btn btn-warning col-3 col-md-5">Odepnij</button><br>'; // przycisk odpinanie
             } else {
-                tempHTML += '<button onclick="engine.pinnedNote(' + id + ')" class="btn btn-success col-3 col-md-5">Przypnij</button><br>';
+                tempHTML += '<button onclick="engine.pinnedNote(' + id + ')" class="btn btn-success col-3 col-md-5">Przypnij</button><br>'; // przycisk przypinanie
             }
             tempHTML += '</div><p class="card-text mt-1">' + note.createDate + '</p></div></div></div>';
             document.querySelector('#tasks').innerHTML += tempHTML;
