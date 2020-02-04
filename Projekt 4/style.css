@@ -103,3 +103,14 @@
     float: left;
     font-size: 20px;
 }
+
+#best {
+    margin-top: 5px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
